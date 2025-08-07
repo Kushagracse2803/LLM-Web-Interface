@@ -16,16 +16,14 @@ This project is a web-based interface for interacting with a Large Language Mode
 ## 📂 Folder Structure
 LLM-Web-Interface/
 │
-├── app.py # Main application logic
-├── templates/ # HTML templates (if using Flask)
-├── static/ # CSS, JS, Images
-├── docs/ # Sample documents for testing
-├── models/ # LLM or embeddings
-├── README.md # Project documentation
-└── requirements.txt # Python dependencies
+├── app.py               # Main application logic
+├── templates/           # HTML templates (if using Flask)
+├── static/              # CSS, JS, Images
+├── docs/                # Sample documents for testing
+├── models/              # LLM or embeddings
+├── README.md            # Project documentation
+├── requirements.txt     # Python dependencies
 
-yaml
-Copy code
 
 ---
 
