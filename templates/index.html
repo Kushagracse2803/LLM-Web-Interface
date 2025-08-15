@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>SALLM Interaction Interface</title>
+
+  <!-- Main stylesheet -->
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}"
+  />
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>EllysiumAI</h1>
+      <button class="settings-icon" id="settingsIcon" title="Settings" aria-label="Settings">
+        <i class="fas fa-cog"></i>
+      </button>
+    </header>
+
+    <!-- Settings Panel -->
+    <section class="settings-panel" id="settingsPanel">
+      <h2>Model Settings</h2>
+
+      <div class="setting-group">
+        <label for="providerSelect">Provider:</label>
+        <select id="providerSelect">
+          <option value="openai">OpenAI</option>
+          <option value="anthropic">Anthropic</option>
+          <option value="google_gemini">Google Gemini</option>
+        </select>
+      </div>
+
+      <!-- OpenAI models -->
+      <div class="setting-group openai-models">
+        <label for="openaiModelSelect">Model:</label>
+        <select id="openaiModelSelect">
+          <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+          <option value="gpt-4">GPT-4</option>
+          <option value="gpt-4-turbo">GPT-4 Turbo</option>
+        </select>
+      </div>
+
+      <!-- Anthropic models -->
+      <div class="setting-group anthropic-models" style="display:none;">
+        <label for="anthropicModelSelect">Model:</label>
+        <select id="anthropicModelSelect">
+          <option value="claude-3-sonnet-20240229">Claude 3 Sonnet</option>
+          <option value="claude-3-opus-20240229">Claude 3 Opus</option>
+          <option value="claude-3-haiku-20240307">Claude 3 Haiku</option>
+        </select>
+      </div>
+
+      <!-- Gemini models -->
+      <div class="setting-group" id="geminiModelGroup" style="display:none;">
+        <label for="geminiModelSelect">Model:</label>
+        <select id="geminiModelSelect">
+          <option value="gemini-1.5-pro-latest">Gemini Pro</option>
+          <option value="gemini-1.5-flash-latest">Gemini Flash</option>
+          <!-- Add others below as needed, no JS change required -->
+          <!-- <option value="gemini-1.5-pro-exp-0825">Gemini Pro (exp)</option> -->
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label for="temperatureSlider">Temperature:
+          <span id="temperatureValue">0.7</span>
+        </label>
+        <input
+          type="range"
+          id="temperatureSlider"
+          min="0"
+          max="1"
+          step="0.1"
+          value="0.7"
+        />
+      </div>
+
+      <div class="setting-group">
+        <label for="maxTokensInput">Max Tokens:</label>
+        <input
+          type="number"
+          id="maxTokensInput"
+          min="100"
+          max="4000"
+          value="1000"
+        />
+      </div>
+
+      <button id="saveSettingsBtn"><i class="fa-regular fa-floppy-disk"></i> Save Settings</button>
+    </section>
+
+    <!-- Chat -->
+    <section class="chat-container">
+      <div class="conversation" id="conversation" aria-live="polite">
+        <div class="welcome-message">
+          <h2>Welcome to the SALLM Interaction Interface!</h2>
+          <h3 style="color: blue;">Project Developed by Kushagra Tiwari!</h3>
+          <p>Enter your prompt below to start a conversation with an AI language model.</p>
+        </div>
+      </div>
+
+      <!-- Loading indicator (hidden by default) -->
+      <div id="loadingIndicator" class="loading" style="display:none;">
+        <div class="loading-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div class="prompt-container">
+        <textarea
+          id="promptInput"
+          placeholder="Enter your prompt here..."
+        ></textarea>
+
+        <div class="prompt-tools">
+          <small id="charCounter">0 chars</small>
+          <button id="stopButton" class="btn-ghost" style="display:none;">
+            <i class="fa-solid fa-stop"></i> Stop
+          </button>
+        </div>
+
+        <div class="button-group">
+          <button id="sendButton"><i class="fa-solid fa-paper-plane"></i> Send</button>
+          <button id="clearButton" class="btn-ghost"><i class="fa-solid fa-broom"></i> Clear</button>
+          <button id="saveButton" class="btn-ghost"><i class="fa-regular fa-floppy-disk"></i> Save Conversation</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Your JS will hook into these IDs -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
